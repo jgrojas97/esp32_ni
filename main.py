@@ -33,7 +33,7 @@ while True:
         if temperatura > Tmax and bandera == True:
             print("publicando")
             mqtt.connect()
-            mqtt.publish(f"aptest/{CLIENT_ID}",datos)
+            mqtt.publish(f"iot/{CLIENT_ID}",datos)
             mqtt.disconnect()
             bandera = False
         if temperatura < Tmin:
