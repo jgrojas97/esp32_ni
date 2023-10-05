@@ -39,14 +39,14 @@ class AHT10:
 
     def humidity(self):
         self.read_raw()
-        return round((self.results_parsed[0] / KILOBYTE_CONST) * 100 , 2) 
+        return round((self.results_parsed[0] / KILOBYTE_CONST) * 100 , 1) 
 
     def temperature(self):
         self.read_raw()
         if self.mode is 0:
-            return round((self.results_parsed[1] / KILOBYTE_CONST) * AHT_TEMPERATURE_CONST - AHT_TEMPERATURE_OFFSET , 2)
+            return round((self.results_parsed[1] / KILOBYTE_CONST) * AHT_TEMPERATURE_CONST - AHT_TEMPERATURE_OFFSET , 1)
         else:
-            return round(((self.results_parsed[1] / KILOBYTE_CONST) * AHT_TEMPERATURE_CONST - AHT_TEMPERATURE_OFFSET) * FARENHEIT_MULTIPLIER + FARENHEIT_OFFSET , 2)
+            return round(((self.results_parsed[1] / KILOBYTE_CONST) * AHT_TEMPERATURE_CONST - AHT_TEMPERATURE_OFFSET) * FARENHEIT_MULTIPLIER + FARENHEIT_OFFSET , 1)
 
     def set_mode(self, mode):
         if mode is not (0 or 1):
@@ -61,4 +61,4 @@ class AHT10:
         prev_mode = self.mode
         self.mode = 0
         h = (log(h, 10) - 2) / 0.4343 + (17.62 * t) / (243.12 + t)
-        return round(243.12 * h / (17.62 - h) , 2)
+        return round(243.12 * h / (17.62 - h) , 1)
