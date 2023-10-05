@@ -10,5 +10,8 @@ aht10 = AHT10(i2c,0,0x38)
 print("Inicializado")
 
 while True:
-    aht10.print()
+    temperatura = aht10.temperature()
+    humedad = aht10.humidity()
+    print(f"La temperatura actual es de {temperatura} *C")
+    print(f"La humedad actual es de {humedad} %")
     time.sleep_ms(2000)
