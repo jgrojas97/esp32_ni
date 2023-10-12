@@ -22,7 +22,7 @@ d = AHT10(i2c,0,0x38)
 
 def sub_cb(topic, msg):
     print((topic, msg))
-    if msg==b"apagar":
+    if msg==b"apagar":      #Texto viene codificado como binario
         led.value(0)
     if msg==b"encender":
         led.value(1)
