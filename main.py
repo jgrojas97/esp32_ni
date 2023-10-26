@@ -1,6 +1,7 @@
 # JGRojas 2023
 
 from machine import Pin, Timer, unique_id, I2C
+# import dht
 from aht10 import AHT10  # Uso un sensor propio AHT10 de T/H
 import time
 import json
@@ -16,6 +17,8 @@ mqtt = MQTTClient(CLIENT_ID, SERVIDOR_MQTT,
                   port=8883, keepalive=10, ssl=True)
 
 led = Pin(2, Pin.OUT)
+
+# d = dht.DHT22(Pin(25))
 i2c = I2C(scl=Pin(21), sda=Pin(22), freq=400000)  
 d = AHT10(i2c,0,0x38)
 
