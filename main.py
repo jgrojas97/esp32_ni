@@ -22,8 +22,8 @@ led = Pin(2, Pin.OUT)
 i2c = I2C(scl=Pin(21), sda=Pin(22), freq=400000)  
 d = AHT10(i2c,0,0x38)
 
-HIGH_THRESHOLD = 27
-LOW_THRESHOLD = 25
+HIGH_THRESHOLD = 27.0  # Límite superior de temperatura
+LOW_THRESHOLD = 25.0  # Límite inferior de temperatura
 ALARM_FLAG = False
 
 
