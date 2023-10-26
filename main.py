@@ -35,7 +35,7 @@ def heartbeat(nada):
     led.value(not led.value())
     contador += 1
   
-def transmitir(pin):
+def transmitir():
     print("publicando")
     mqtt.connect()
     mqtt.publish(f"iot/{CLIENT_ID}",datos)
