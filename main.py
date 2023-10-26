@@ -1,7 +1,7 @@
-# Germán Andrés Xander 2023
+# JGRojas 2023
 
 from machine import Pin, Timer, unique_id, I2C
-from aht10 import AHT10
+from aht10 import AHT10  # Uso un sensor propio AHT10 de T/H
 import time
 import json
 import ubinascii
@@ -19,8 +19,8 @@ led = Pin(2, Pin.OUT)
 i2c = I2C(scl=Pin(21), sda=Pin(22), freq=400000)  
 d = AHT10(i2c,0,0x38)
 
-HIGH_THRESHOLD = 35
-LOW_THRESHOLD = 30
+HIGH_THRESHOLD = 27
+LOW_THRESHOLD = 25
 ALARM_FLAG = False
 
 
@@ -42,8 +42,6 @@ def transmitir(pin):
     mqtt.disconnect()
     pulsos.init(period=150, mode=Timer.PERIODIC, callback=heartbeat)
 
-#publicar = Timer(0)
-#publicar.init(period=30000, mode=Timer.PERIODIC, callback=transmitir)
 pulsos = Timer(1)
 
 while True:
